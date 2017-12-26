@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lingv"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/gv_gx"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:text="父子" />
+            <View style="@style/style_line_vertical1" />
+
+            <TextView
+                android:id="@+id/gv_xm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:text="张三三" />
+            <View style="@style/style_line_vertical1" />
+            <TextView
+                android:id="@+id/gv_nl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="23"
+                android:textSize="14sp" />
+            <View style="@style/style_line_vertical1" />
+            <TextView
+                android:id="@+id/gv_zzmm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="中共党员" />
+            <View style="@style/style_line_vertical1" />
+            <TextView
+                android:id="@+id/gv_dw"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:layout_weight="1.5"
+                android:text="11111"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <View style="@style/style_line_vertical2" />
+
+
+
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dimen_0.5"
+        android:background="@color/black"></TextView>
+
+
+
+
+
+</LinearLayout>

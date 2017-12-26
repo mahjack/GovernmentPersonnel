@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/header_back"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_60"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:paddingLeft="@dimen/dimen_25"
+            android:text="返回  "
+            android:textSize="@dimen/dimen_22" />
+
+        <com.sdzx.government.governmentpersonnel.search.ClearEditText
+            android:id="@+id/filter_edit"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_20"
+            android:layout_marginBottom="@dimen/dimen_5"
+            android:background="@drawable/bg_shape"
+            android:hint="请输入关键字"
+            android:paddingLeft="20dp"
+            android:textSize="22dp"
+            android:layout_weight="0.95" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/peolv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_5" />
+
+
+</LinearLayout>

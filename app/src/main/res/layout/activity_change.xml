@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_70"
+        android:layout_marginBottom="40dp"
+        android:background="@color/main_color">
+
+        <TextView
+            android:id="@+id/header_back"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_70"
+            android:drawableLeft="@mipmap/header_title_back"
+            android:drawablePadding="@dimen/dimen_5"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dimen_10"
+            android:text="返回"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_20" />
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="修改密码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_24" />
+
+        <ImageView
+            android:id="@+id/header_right"
+            android:layout_width="@dimen/dimen_50"
+            android:layout_height="@dimen/dimen_50"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dimen_5"
+            android:visibility="invisible"
+            android:src="@mipmap/ic_launcher" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="原    密    码" />
+
+        <EditText
+            android:id="@+id/tv_ymm"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/bg_shape"
+            android:inputType="textPassword"
+            android:textSize="20sp"
+
+            android:text="" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="新    密    码" />
+
+        <EditText
+            android:id="@+id/tv_xmm"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/bg_shape"
+            android:inputType="textPassword"
+            android:textSize="20sp"
+
+            android:text="" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="重复新密码" />
+
+        <EditText
+            android:id="@+id/tv_cxmm"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/bg_shape"
+            android:inputType="textPassword"
+            android:textSize="20sp"
+
+            android:text="" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_change"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="确认修改"
+        android:background="@drawable/ripple_button"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_margin="40dp"/>
+</LinearLayout>

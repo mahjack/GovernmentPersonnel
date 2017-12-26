@@ -1,0 +1,38 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="style_line_vertical">
+        <item name="android:layout_width">@dimen/dimen_0.5</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/dimen_0</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_0</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_15</item>
+        <item name="android:layout_marginRight">@dimen/dimen_15</item>
+    </style>
+    <style name="style_line_vertical1">
+        <item name="android:layout_width">@dimen/dimen_0.5</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/dimen_0</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_0</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_0</item>
+        <item name="android:layout_marginRight">@dimen/dimen_0</item>
+    </style>
+    <style name="style_line_vertical2">
+        <item name="android:layout_width">@dimen/dimen_0.5</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/dimen_0</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_0</item>
+        <item name="android:layout_marginLeft">@dimen/dimen_0</item>
+        <item name="android:layout_marginRight">@dimen/dimen_5</item>
+    </style>
+
+</resources>

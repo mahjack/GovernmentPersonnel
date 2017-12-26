@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linzz"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <View style="@style/style_line_vertical1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="学历"
+                android:textSize="12sp" />
+            <View style="@style/style_line_vertical1" />
+            <TextView
+                android:id="@+id/xl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <View style="@style/style_line_vertical1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="毕业院校"
+                android:textSize="12sp" />
+            <View style="@style/style_line_vertical1" />
+
+            <TextView
+                android:id="@+id/byyx"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:gravity="center"
+                android:layout_weight="2"
+                android:text="1111"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+        <View style="@style/style_line_vertical2"/>
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0.5"
+        android:layout_marginRight="@dimen/dimen_5"
+        android:background="@color/black"></TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1">
+            <View style="@style/style_line_vertical1" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="学位"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="12sp" />
+            <View style="@style/style_line_vertical1" />
+
+            <TextView
+                android:id="@+id/te_bysj"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <View style="@style/style_line_vertical1" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="系及专业"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:textSize="12sp" />
+            <View style="@style/style_line_vertical1" />
+
+            <TextView
+                android:id="@+id/xjzy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text=""
+                android:textSize="12sp" />
+        </LinearLayout>
+        <View style="@style/style_line_vertical2"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0.5"
+        android:layout_marginRight="@dimen/dimen_5"
+        android:background="@color/black"></TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <View style="@style/style_line_vertical1" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="学历证件"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="12sp" />
+            <View style="@style/style_line_vertical1" />
+
+            <Button
+                android:id="@+id/xlzjz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="查看"
+                android:textColor="#626262"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <View style="@style/style_line_vertical1" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="学位证件"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:textSize="12sp" />
+            <View style="@style/style_line_vertical1" />
+
+            <Button
+                android:id="@+id/xwzjz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:text="查看"
+                android:textColor="#626262"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <View style="@style/style_line_vertical2"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
