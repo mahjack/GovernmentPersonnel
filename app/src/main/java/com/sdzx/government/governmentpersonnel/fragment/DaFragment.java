@@ -51,8 +51,8 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
     ListView expandableListView;
     @Bind(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
-    @Bind(R.id.spinner_bm)
-    TextView spinner_bm;
+
+    public  static TextView spinner_bm;
     @Bind(R.id.spinner_xb)
     Spinner spinner_xb;
     @Bind(R.id.spinner_xl)
@@ -68,7 +68,7 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
     private List<String> ChildData=new ArrayList<>();//第一级数据
     private List<String> ChildDataId=new ArrayList<>();//第一级数据ID
 
-    String ssbm = "0";
+//    String ssbm = "0";
     String jb = "0";
     String zzmm = "0";
     String xb = "0";
@@ -86,6 +86,7 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
         context = v.getContext();
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         ButterKnife.bind(this, v);
+        spinner_bm=(TextView) v.findViewById(R.id.spinner_bm);
         handler = new Handler();
         swipeRefreshLayout.setColorSchemeResources(R.color.deeppink, R.color.darkorange, R.color.mediumblue);
         swipeRefreshLayout.post(this);
@@ -144,19 +145,8 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
                 dialog.builder()
                         .setTitle("请选择")
                         .setCancelable(true)
-                        .setNegativeButton("取消", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .setPositiveButton("确定", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                spinner_bm.setText(MyApp.bmname);
-                                dialog.dismiss();
-                            }
-                        })
+
+
                         .show();
             }
         });
@@ -223,7 +213,7 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
         textCx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoList = db.findByCs(ssbm,jb,zzmm,xb,xl,textBz.getText().toString());
+                infoList = db.findByCs(MyApp.bmid,jb,zzmm,xb,xl,textBz.getText().toString());
                 expandableAdapter.updateListView(infoList);
                 message.setText("当前查询到"+infoList.size()+"人");
             }
@@ -251,5 +241,11 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        spinner_bm.setText(MyApp.bmname);
     }
 }

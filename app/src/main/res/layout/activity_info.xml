@@ -341,11 +341,12 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="50dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
                     android:scaleType="fitXY"
+                    android:layout_weight="0"
                     android:src="@mipmap/pic1" />
 
             </LinearLayout>

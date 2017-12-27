@@ -12,11 +12,11 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sdzx.government.governmentpersonnel.R;
 import com.sdzx.government.governmentpersonnel.adapter.SimpleTreeAdapter;
 import com.sdzx.government.governmentpersonnel.bean.FileBean;
+import com.sdzx.government.governmentpersonnel.fragment.DaFragment;
 import com.zhy.tree.bean.Node;
 import com.zhy.tree.bean.TreeListViewAdapter;
 
@@ -74,9 +74,10 @@ public class SlectManDialog {
                     if (node.isLeaf()) {
                         MyApp.bmname=node.getName();
                         MyApp.bmid=node.getId()+"";
+                        DaFragment.spinner_bm.setText( MyApp.bmname);
                         Log.v("bmid",MyApp.bmid);
-                        Toast.makeText(mContext, node.getName(),
-                                Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(mContext, node.getName(),
+//                                Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
                 }
