@@ -299,6 +299,7 @@ public class DBHelper {
      * 通过state查找制定数据
      */
     public List<RsdaInfo> findByStateAndBm(int state,int ssbm) {
+		String[] aa=new String[]{state+"",ssbm+""};
         Cursor cursor = db.query("rsda_info", null, "state=? and ssbm=?", new String[]{state+"",ssbm+""},
                 null, null,"seq ASC", null);
         List<RsdaInfo> rsdaInfoList=new ArrayList<RsdaInfo>();
@@ -359,6 +360,106 @@ public class DBHelper {
         }
         return rsdaInfoList;
     }
+	/**
+	 * 通过state查找制定数据
+	 */
+	public List<RsdaInfo> findByCs(String ssbm,String jb,String zzmm,String xb,String xl,String bz) {
+		List<String> li=new ArrayList<>();
+		List<String> keyList=new ArrayList<>();
+		if (!"0".equals(ssbm)){
+			keyList.add("ssbm=? ");
+			li.add(ssbm);
+		}
+		if (!"0".equals(jb)){
+			li.add(jb);
+			keyList.add("xzjb=? ");
+		}
+		if (!"0".equals(zzmm)){
+			li.add(zzmm);
+			keyList.add("zzmm=? ");
+		}
+		if (!"0".equals(xb)){
+			keyList.add("sex=? ");
+			li.add(xb);
+		}
+		if (!"0".equals(xl)){
+			li.add(xl);
+			keyList.add("qr_xl=? ");
+		}
+		if (!"".equals(bz)){
+			li.add(bz);
+			keyList.add("bianzhi=? ");
+		}
+		String[] arr = (String[])li.toArray(new String[li.size()]);
+		String key="";
+		for (int i = 0; i <keyList.size() ; i++) {
+			key+=keyList.get(i);
+			if (i<keyList.size()-1){
+				key+=" and ";
+			}
+		}
+		Log.v("key",key);
+		Log.v("list",arr.toString());
+		Cursor cursor = db.query("rsda_info", null, key, arr,
+				null, null,"seq ASC", null);
+		List<RsdaInfo> rsdaInfoList=new ArrayList<RsdaInfo>();
+		while (cursor.moveToNext()) {
+			RsdaInfo info = new RsdaInfo();
+			info.setId(cursor.getInt(cursor.getColumnIndex("id")));
+			info.setName(cursor.getString(cursor.getColumnIndex("name")));
+			info.setBirth(cursor.getString(cursor.getColumnIndex("birth")));
+			info.setNation(cursor.getString(cursor.getColumnIndex("nation")));
+			info.setOrigin(cursor.getString(cursor.getColumnIndex("origin")));
+			info.setRdtime(cursor.getString(cursor.getColumnIndex("rdtime")));
+
+			info.setWorktime(cursor.getString(cursor.getColumnIndex("worktime")));
+			info.setHealthy(cursor.getString(cursor.getColumnIndex("healthy")));
+			info.setZyjszw(cursor.getString(cursor.getColumnIndex("zyjszw")));
+			info.setSxzyzc(cursor.getString(cursor.getColumnIndex("sxzyzc")));
+			info.setBianzhi(cursor.getString(cursor.getColumnIndex("bianzhi")));
+			info.setDrsj(cursor.getString(cursor.getColumnIndex("drsj")));
+			info.setXrzsj(cursor.getString(cursor.getColumnIndex("xrzsj")));
+			info.setXrzjsj(cursor.getString(cursor.getColumnIndex("xrzjsj")));
+
+			info.setQr_xl(cursor.getString(cursor.getColumnIndex("qr_xl")));
+			info.setQr_byyx(cursor.getString(cursor.getColumnIndex("qr_byyx")));
+			info.setQr_xw(cursor.getString(cursor.getColumnIndex("qr_xw")));
+			info.setQr_xjzy(cursor.getString(cursor.getColumnIndex("qr_xjzy")));
+			info.setQr_bysj(cursor.getString(cursor.getColumnIndex("qr_bysj")));
+			info.setQr_xlzp(cursor.getString(cursor.getColumnIndex("qr_xlzp")));
+			info.setQr_xwzp(cursor.getString(cursor.getColumnIndex("qr_xwzp")));
+			info.setGzdwzw(cursor.getString(cursor.getColumnIndex("gzdwzw")));
+			info.setTxzp(cursor.getString(cursor.getColumnIndex("txzp")));
+
+			info.setXzjb(GetCS.getXzjbCs(cursor.getInt(cursor.getColumnIndex("xzjb"))));
+
+			info.setRmfj(cursor.getString(cursor.getColumnIndex("rmfj")));
+			info.setSfzh(cursor.getString(cursor.getColumnIndex("sfzh")));
+			info.setZjzp(cursor.getString(cursor.getColumnIndex("zjzp")));
+			info.setJianli(cursor.getString(cursor.getColumnIndex("jianli")));
+			info.setJlqk(cursor.getString(cursor.getColumnIndex("jlqk")));
+			info.setNdkhjg(cursor.getString(cursor.getColumnIndex("ndkhjg")));
+			info.setBeizhu(cursor.getString(cursor.getColumnIndex("beizhu")));
+
+			info.setRetire_time(cursor.getString(cursor.getColumnIndex("retire_time")));
+			info.setRetire_attach(cursor.getString(cursor.getColumnIndex("retire_attach")));
+			info.setLeave_time(cursor.getString(cursor.getColumnIndex("leave_time")));
+			info.setLeave_attach(cursor.getString(cursor.getColumnIndex("leave_attach")));
+			info.setAddtime(cursor.getInt(cursor.getColumnIndex("addtime")));
+			try{
+				int ssbmdh=cursor.getInt(cursor.getColumnIndex("ssbm"));
+				info.setSsbm(findById("kjj_group_info",ssbmdh));
+			}catch (Exception e){
+
+			}
+			info.setSex(GetCS.getSexCs(cursor.getInt(cursor.getColumnIndex("sex"))));
+			info.setZzmm(GetCS.getZzmmCs(cursor.getInt(cursor.getColumnIndex("zzmm"))));
+
+
+			rsdaInfoList.add(info);
+		}
+		return rsdaInfoList;
+	}
 
 
 	/**

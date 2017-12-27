@@ -58,13 +58,17 @@ public class PeoplesAdapter extends BaseAdapter{
             holder.txt1 = (TextView) view.findViewById(R.id.textView_name);
             holder.txt2 = (TextView) view.findViewById(R.id.textView_company);
             holder.txt3 = (TextView) view.findViewById(R.id.textView_groupname);
+            holder.txt4 = (TextView) view.findViewById(R.id.textView_xb);
+            holder.txt5 = (TextView) view.findViewById(R.id.textView_csny);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
         holder.txt1.setText(list.get(position).getName());
-        holder.txt2.setText(list.get(position).getOrigin());
+        holder.txt2.setText(list.get(position).getZzmm());
         holder.txt3.setText(list.get(position).getXzjb());
+        holder.txt4.setText(list.get(position).getSex());
+        holder.txt5.setText(list.get(position).getBirth());
 
         return view;
     }
@@ -73,5 +77,7 @@ public class PeoplesAdapter extends BaseAdapter{
         private TextView txt1;
         private TextView txt2;
         private TextView txt3;
+        private TextView txt4;
+        private TextView txt5;
     }
 }

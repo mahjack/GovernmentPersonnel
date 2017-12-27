@@ -49,7 +49,7 @@ public class SearchActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
-        infoList=MainActivity.db.findAll();
+        infoList=MainActivity.db.findByState(0);
         peolistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -104,7 +104,15 @@ public class SearchActivity extends Activity{
             filterDateList.clear();
             for(RsdaInfo People : infoList){
                 String name = People.getName();
-                if(name.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(name).startsWith(filterStr.toString())){
+                String xzjb=People.getXzjb();
+                String csny=People.getBirth();
+                String zzmm=People.getZzmm();
+                String sex=People.getSex();
+                if(name.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(name).startsWith(filterStr.toString())
+                        ||xzjb.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(xzjb).startsWith(filterStr.toString())
+                        ||zzmm.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(zzmm).startsWith(filterStr.toString())
+                        ||csny.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(csny).startsWith(filterStr.toString())
+                        ||sex.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(sex).startsWith(filterStr.toString())){
                     filterDateList.add(People);
                 }
             }

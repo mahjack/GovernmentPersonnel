@@ -5,39 +5,126 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="2dp"
         android:orientation="horizontal">
 
-
-
-
-
-        <Spinner
+        <TextView
             android:id="@+id/spinner_bm"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="35dp"
-            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_weight="1"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="@dimen/dimen_5"
             android:background="@drawable/bg_shape"
-            android:padding="2dp"
+            android:textColor="#1077F7"
+            android:text="全部部门"
             android:gravity="center"
-            android:textAlignment="center"
             android:textSize="16sp" />
         <Spinner
-            android:id="@+id/spinner_xb"
-            android:layout_width="wrap_content"
+            android:id="@+id/spinner_jb"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="35dp"
-            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_5"
             android:layout_marginRight="5dp"
             android:background="@drawable/bg_shape"
             android:padding="2dp"
             android:gravity="center"
-            android:textAlignment="center"
+            android:textSize="16sp" />
+        <Spinner
+            android:id="@+id/spinner_zzmm"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_shape"
+            android:padding="2dp"
+            android:gravity="center"
             android:textSize="16sp" />
 
 
 
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/spinner_xb"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_weight="2"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_shape"
+            android:padding="2dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+        <Spinner
+            android:id="@+id/spinner_xl"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_marginRight="5dp"
+            android:layout_weight="2"
+            android:background="@drawable/bg_shape"
+            android:padding="2dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/text_bz"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_marginRight="6dp"
+            android:textColor="#1077F7"
+            android:background="@drawable/bg_shape"
+            android:layout_marginTop="4dp"
+
+            android:hint="编制"
+            android:gravity="center"
+            android:textSize="16sp" />
+        <Button
+            android:id="@+id/text_cx"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/dimen_5"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="2dp"
+            android:background="@drawable/ripple_button"
+            android:textColor="@color/white"
+            android:text="查询"
+            android:gravity="center"
+            android:textSize="16sp" />
+
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/message"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="appp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0.5"
+        android:background="@color/main_color"/>
+
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"

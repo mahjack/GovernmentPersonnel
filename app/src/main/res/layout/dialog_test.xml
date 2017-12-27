@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ll_task_finish"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/tv_task_finish_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/main_color"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="办结"
+        android:textSize="16sp"
+         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ListView
+                android:id="@+id/lv_tree"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="#aaa"
+                android:dividerHeight="1px"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:layout_gravity="center"
+        android:padding="@dimen/dimen_5"
+        >
+
+        <Button
+            android:id="@+id/bt_task_finish_cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn2"
+            android:textColor="@color/white"
+            android:text="取消"
+          />
+
+        <Button
+            android:id="@+id/bt_task_finish_submit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn2"
+            android:textColor="@color/white"
+            android:text="确定"
+            />
+
+    </LinearLayout>
+</LinearLayout>

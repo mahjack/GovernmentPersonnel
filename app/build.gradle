@@ -38,4 +38,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.zhy:okhttputils:2.4.1'
     compile files('libs/easemobchat_2.1.5.jar')
+    compile files('libs/zhy_treeview.jar')
 }

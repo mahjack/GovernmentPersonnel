@@ -40,6 +40,7 @@
             android:padding="@dimen/dimen_5"
             android:layout_centerVertical="true"
             android:text="放大×2"
+            android:visibility="invisible"
             android:layout_marginRight="@dimen/dimen_5"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_16"
@@ -340,11 +341,11 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="0dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
-                    android:layout_weight="0"
+                    android:scaleType="fitXY"
                     android:src="@mipmap/pic1" />
 
             </LinearLayout>
@@ -363,6 +364,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="35dp"
+                        android:layout_marginTop="@dimen/dimen_0.5"
                         android:layout_marginLeft="@dimen/dimen_0.5"
                         android:layout_marginBottom="@dimen/dimen_0.5"
                         android:background="#ffffffff"
@@ -375,6 +377,7 @@
                         android:id="@+id/tv_gzdw"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dimen_0.5"
                         android:layout_marginLeft="@dimen/dimen_0.5"
                         android:layout_marginRight="@dimen/dimen_0.5"
                         android:layout_marginBottom="@dimen/dimen_0.5"
