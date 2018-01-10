@@ -30,6 +30,10 @@ public class MyApp {
     public static String PATH="/mnt/sdcard/zxkj";
     public static String bmname="选择部门";
     public static String bmid="0";
+    public static String xlname="学历不限";
+    public static String xlid="0";
+    public static String jbname="级别不限";
+    public static String jbid="0";
     /**
      * 判断当前设备是手机还是平板，代码来自 Google I/O App for Android
      * @param context

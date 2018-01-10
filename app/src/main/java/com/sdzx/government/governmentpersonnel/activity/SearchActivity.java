@@ -38,6 +38,7 @@ public class SearchActivity extends Activity{
 //    List<Contacts.People> peoples=new ArrayList<>();
     PeoplesAdapter peoplesAdapter;
     private List<RsdaInfo> infoList=new ArrayList<RsdaInfo>();
+    List<RsdaInfo> filterDateList;
 
     /**
      * 汉字转换成拼音的类
@@ -55,7 +56,7 @@ public class SearchActivity extends Activity{
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent=new Intent(SearchActivity.this,PeopleInfoActivity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putSerializable("info",infoList.get(i));
+                mBundle.putSerializable("info",filterDateList.get(i));
                 intent.putExtra("state",0);
                 intent.putExtras(mBundle);
                 startActivity(intent);
@@ -96,7 +97,7 @@ public class SearchActivity extends Activity{
      * @param filterStr
      */
     private void filterData(String filterStr){
-        List<RsdaInfo> filterDateList = new ArrayList<RsdaInfo>();
+        filterDateList = new ArrayList<RsdaInfo>();
 
         if(TextUtils.isEmpty(filterStr)){
 //            filterDateList ;

@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/beige"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -39,8 +39,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_5"
             android:layout_centerVertical="true"
-            android:text="放大×2"
-            android:visibility="invisible"
+            android:text="放大"
             android:layout_marginRight="@dimen/dimen_5"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_16"
@@ -49,8 +48,13 @@
     </RelativeLayout>
 
     <ScrollView
+        android:id="@+id/scrollView"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <com.sdzx.government.governmentpersonnel.tools.PowerfulLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/linz"
@@ -608,7 +612,7 @@
                         android:background="#ffffffff"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="1111111111111111"
+                        android:text=""
                         android:textSize="14sp" />
 
                     <TextView
@@ -629,7 +633,7 @@
                         android:background="#ffffffff"
                         android:layout_margin="0.5dp"
                         android:gravity="center"
-                        android:text="222222222222222222222"
+                        android:text=""
                         android:textSize="14sp" />
                 </TableRow>
 
@@ -640,6 +644,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp">
 
@@ -654,6 +659,7 @@
                 android:layout_height="@dimen/dimen_0.5"
                 android:layout_marginLeft="@dimen/dimen_5"
                 android:layout_marginRight="@dimen/dimen_5"
+                android:visibility="gone"
                 android:background="@color/black"></TextView>
 
 
@@ -661,6 +667,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginLeft="5dp">
 
                 <com.sdzx.government.governmentpersonnel.tools.MyListView
@@ -835,6 +842,9 @@
                     android:text="简历"
                     android:background="@color/white"
                     android:gravity="center"
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginLeft="0.5dp"
+                    android:layout_marginBottom="@dimen/dimen_0.5"
                     android:layout_margin="0.5dp"
                     android:ems="1"
                     android:textSize="14sp" />
@@ -862,7 +872,8 @@
                     android:text="奖惩情况"
                     android:background="@color/white"
                     android:gravity="center"
-                    android:layout_margin="0.5dp"
+                    android:layout_marginLeft="0.5dp"
+                    android:layout_marginBottom="@dimen/dimen_0.5"
                     android:ems="2"
                     android:textSize="14sp" />
                 <TextView
@@ -889,7 +900,8 @@
                     android:text="年度考核结果"
                     android:background="@color/white"
                     android:gravity="center"
-                    android:layout_margin="0.5dp"
+                    android:layout_marginLeft="0.5dp"
+                    android:layout_marginBottom="@dimen/dimen_0.5"
                     android:ems="3"
                     android:textSize="14sp" />
                 <TextView
@@ -1178,26 +1190,41 @@
 
 
         </LinearLayout>
-
+        </com.sdzx.government.governmentpersonnel.tools.PowerfulLayout>
 
     </ScrollView>
+    <com.sdzx.government.governmentpersonnel.tools.DragImageView
+        android:id="@+id/img"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+    />
+
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:orientation="vertical" >
-
         <include
             android:id="@+id/include"
             layout="@layout/activity_info_top_tab" />
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/page_vp"
-            android:background="@color/white"
+        <View
+            android:id="@+id/view_temp"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dimen_1"
+            android:background="#d6d6d6" />
+        <RelativeLayout
+            android:id="@+id/main_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-        </android.support.v4.view.ViewPager>
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="50dp"
+            android:background="@color/white" />
+
+
+
+
+
+
 
     </LinearLayout>
     

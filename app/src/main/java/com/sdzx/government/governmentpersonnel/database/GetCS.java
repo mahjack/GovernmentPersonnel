@@ -41,19 +41,38 @@ public class GetCS {
         return zzmm;
     }
     public static String getXljbCs(int dm){
-        String xljb="专科以下";
+        String xljb="无";
         switch (dm){
-            case 1: xljb="博士研究生";break;
-            case 2: xljb="硕士研究生";break;
-            case 3: xljb="本科";break;
-            case 4: xljb="专科";break;
-            case 5: xljb="中专";break;
+            case 11: xljb="研究生";break;
+            case 12: xljb="研究生班";break;
+            case 13: xljb="中央党校研究生";break;
+            case 14: xljb="省委党校研究生";break;
+            case 21: xljb="大学";break;
+            case 22: xljb="中央党校大学";break;
+            case 23: xljb="省委党校大学";break;
+            case 31: xljb="大专";break;
+            case 32: xljb="中央党校大专";break;
+            case 33: xljb="省委党校大专";break;
+            case 34: xljb="大学普通班";break;
+            case 4: xljb="中专";break;
+            case 5: xljb="中技";break;
             case 6: xljb="高中";break;
             case 7: xljb="初中";break;
             case 8: xljb="小学";break;
             case 9: xljb="";break;
         }
         return xljb;
+    }
+    public static String getBianZhiCs(int dm){
+        String bz="";
+        switch (dm){
+            case 1: bz="行政编制";break;
+            case 2: bz="事业编制（参公）";break;
+            case 3: bz="事业编制（其他）";break;
+            case 4: bz="工勤编制";break;
+            case 5: bz="其他编制";break;
+        }
+        return bz;
     }
     public static String getXzjbCs(int dm){
         String xzjb="普通岗位";
@@ -76,6 +95,7 @@ public class GetCS {
             case 16: xzjb="副主任科员";break;
             case 17: xzjb="科员";break;
             case 18: xzjb="办事员";break;
+            case 19: xzjb="试用期人员";break;
             case 21: xzjb="专业一级（正高级）";break;
             case 22: xzjb="专业二级（正高级）";break;
             case 23: xzjb="专业三级（正高级）";break;
@@ -89,12 +109,26 @@ public class GetCS {
             case 31: xzjb="专业十一级（初级）";break;
             case 32: xzjb="专业十二级（初级）";break;
             case 33: xzjb="专业十三级（初级）";break;
+            case 34: xzjb="试用期人员";break;
             case 41: xzjb="技术一级（高级技师）";break;
             case 42: xzjb="技术二级（技师）";break;
             case 43: xzjb="技术三级（高级工）";break;
             case 44: xzjb="技术四级（中级工）";break;
             case 45: xzjb="技术五级（初级工）";break;
             case 46: xzjb="普通岗位";break;
+            case 51: xzjb="一级职员";break;
+            case  52: xzjb="二级职员";break;
+            case  53: xzjb="三级职员";break;
+            case  54: xzjb="四级职员";break;
+            case 55: xzjb="五级职员";break;
+            case 56: xzjb="六级职员";break;
+            case 57: xzjb="七级职员";break;
+            case  58: xzjb="八级职员";break;
+            case 59: xzjb="九级职员";break;
+            case 60: xzjb="十级职员";break;
+            case 61: xzjb="试用期人员";break;
+            case 62: xzjb="其他";break;
+
         }
         return xzjb;
     }
@@ -238,6 +272,18 @@ public class GetCS {
         xlMap.put( 7,"初中");
         xlMap.put( 8,"小学");
         xlMap.put( 9,"");
+        xlMap.put( 10,"研究生班");
+        xlMap.put( 11,"中央党校研究生");
+        xlMap.put( 12,"省委党校研究生");
+        xlMap.put( 13,"大学");
+        xlMap.put( 14,"中央党校大学");
+        xlMap.put( 15,"省委党校大学");
+        xlMap.put( 16,"大专");
+        xlMap.put( 17,"中央党校大专");
+        xlMap.put( 18,"省委党校大专");
+        xlMap.put( 19,"大学普通班");
+        xlMap.put( 20,"中技");
+
     }
     public static final Map<Integer, String> xbMap;
     static {
@@ -245,6 +291,17 @@ public class GetCS {
         xbMap.put( 0,"性别不限");
         xbMap.put( 1,"男");
         xbMap.put( 2,"女");
+
+    }
+    public static final Map<Integer, String> bzMap;
+    static {
+        bzMap = new HashMap<Integer, String>();
+        bzMap.put( 0,"所有编制");
+        bzMap.put( 1,"行政编制");
+        bzMap.put( 2,"事业编制（参公）");
+        bzMap.put( 3,"事业编制（其他）");
+        bzMap.put( 4,"工勤编制");
+        bzMap.put( 5,"其他编制");
 
     }
     public static final Map<Integer, String> mzMap;

@@ -66,7 +66,7 @@ public class ZzjyInfoAdapter extends BaseAdapter{
             holder = new ViewHolder();
             view = View.inflate(context, R.layout.listview_zzjy, null);
             holder.txt1 = (TextView) view.findViewById(R.id.xl);
-            holder.txt2 = (TextView) view.findViewById(R.id.xw);
+//            holder.txt2 = (TextView) view.findViewById(R.id.xw);
             holder.txt3 = (TextView) view.findViewById(R.id.byyx);
             holder.txt4 = (TextView) view.findViewById(R.id.xjzy);
             holder.txt5 = (Button) view.findViewById(R.id.xlzjz);
@@ -84,13 +84,13 @@ public class ZzjyInfoAdapter extends BaseAdapter{
             cursor.moveToPosition(position);
             String slsm="";
             try {
-                slsm= GetCS.getXljbCs(cursor.getInt(cursor.getColumnIndex("xl")));
+                slsm= GetCS.getXljbCs(cursor.getInt(cursor.getColumnIndex("xl")))+"\n"+cursor.getString(cursor.getColumnIndex("xw"));
             } catch (Exception e) {
                 e.printStackTrace();
             }
             holder.txt1.setText(slsm);
 //            holder.txt2.setText(cursor.getString(cursor.getColumnIndex("xw")));
-            holder.txt3.setText(cursor.getString(cursor.getColumnIndex("byyx"))+"");
+            holder.txt3.setText(cursor.getString(cursor.getColumnIndex("byyx"))+cursor.getString(cursor.getColumnIndex("xjzy")));
             holder.txt4.setText(cursor.getString(cursor.getColumnIndex("xjzy"))+"");
             holder.txt7.setText(cursor.getString(cursor.getColumnIndex("bysj"))+"");
 

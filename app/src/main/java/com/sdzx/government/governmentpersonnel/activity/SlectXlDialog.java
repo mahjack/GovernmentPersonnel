@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.sdzx.government.governmentpersonnel.R;
-import com.sdzx.government.governmentpersonnel.adapter.SimpleTreeAdapter;
+import com.sdzx.government.governmentpersonnel.adapter.SimpleTreeXlAdapter;
 import com.sdzx.government.governmentpersonnel.bean.FileBean;
 import com.zhy.tree.bean.Node;
 import com.zhy.tree.bean.TreeListViewAdapter;
@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
  * Time: 8:13
  */
 
-public class SlectManDialog {
+public class SlectXlDialog {
     @Bind(R.id.ll_task_finish)
     LinearLayout linearLayoutTaskFinish;
     @Bind(R.id.tv_task_finish_title)
@@ -49,13 +49,13 @@ public class SlectManDialog {
     private List<FileBean> mDatas = new ArrayList<FileBean>();
 
 
-    public SlectManDialog(Context context) {
+    public SlectXlDialog(Context context) {
         this.mContext = context;
         WindowManager windowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         display = windowManager.getDefaultDisplay();
     }
 
-    public SlectManDialog builder() {
+    public SlectXlDialog builder() {
         // 获取布局
         View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_test, null);
         // 自定义Dialog布局参数
@@ -64,20 +64,11 @@ public class SlectManDialog {
         ButterKnife.bind(this, view);
         initData();
         try {
-            mAdapter = new SimpleTreeAdapter<FileBean>(lvTree, mContext, mDatas, 10);
+            mAdapter = new SimpleTreeXlAdapter(lvTree, mContext, mDatas, 10);
 
             mAdapter.setOnTreeNodeClickListener(new TreeListViewAdapter.OnTreeNodeClickListener() {
                 @Override
                 public void onClick(Node node, int position) {
-//                    if (node.isLeaf()) {
-//                        MyApp.bmname=node.getName();
-//                        MyApp.bmid=node.getId()+"";
-////                        DaFragment.spinner_bm.setText( MyApp.bmname);
-//                        Log.v("bmid",MyApp.bmid);
-////                        Toast.makeText(mContext, node.getName(),
-////                                Toast.LENGTH_SHORT).show();
-//                        dialog.dismiss();
-//                    }
                 }
 
             });
@@ -93,10 +84,31 @@ public class SlectManDialog {
 
     private void initData(){
         // id , pid , label , 其他属性
-        for (int i = 0; i < MyApp.group_infoList.size(); i++) {
-            mDatas.add(new FileBean(MyApp.group_infoList.get(i).getId(), MyApp.group_infoList.get(i).getPid(), MyApp.group_infoList.get(i).getName()));
-
-        }
+//        for (int i = 0; i < MyApp.group_infoList.size(); i++) {
+//            mDatas.add(new FileBean(MyApp.group_infoList.get(i).getId(), MyApp.group_infoList.get(i).getPid(), MyApp.group_infoList.get(i).getName()));
+//
+//        }
+        mDatas.add(new FileBean(0,0,"学历不限"));
+        mDatas.add(new FileBean(1,0,"研究生教育"));
+        mDatas.add(new FileBean(11,1,"研究生"));
+        mDatas.add(new FileBean(12,1,"研究生班"));
+        mDatas.add(new FileBean(13,1,"中央党校研究生"));
+        mDatas.add(new FileBean(14,1,"省委党校研究生"));
+        mDatas.add(new FileBean(2,0,"本科教育"));
+        mDatas.add(new FileBean(21,2,"大学"));
+        mDatas.add(new FileBean(22,2,"中央党校大学"));
+        mDatas.add(new FileBean(23,2,"省委党校大学"));
+        mDatas.add(new FileBean(3,0,"专科教育"));
+        mDatas.add(new FileBean(31,3,"大专"));
+        mDatas.add(new FileBean(32,3,"中央党校大专"));
+        mDatas.add(new FileBean(33,3,"省委党校大专"));
+        mDatas.add(new FileBean(34,3,"大学普通班"));
+        mDatas.add(new FileBean(4,0,"中专"));
+        mDatas.add(new FileBean(5,0,"中技"));
+        mDatas.add(new FileBean(6,0,"高中"));
+        mDatas.add(new FileBean(7,0,"初中"));
+        mDatas.add(new FileBean(8,0,"小学"));
+        mDatas.add(new FileBean(9,0,"无"));
 
     }
     /**
@@ -105,7 +117,7 @@ public class SlectManDialog {
      * @param title
      * @return
      */
-    public SlectManDialog setTitle(String title) {
+    public SlectXlDialog setTitle(String title) {
         if ("".equals(title)) {
             taskFinishTitle.setText("标题");
         } else {
@@ -129,7 +141,7 @@ public class SlectManDialog {
      * @param cancel
      * @return
      */
-    public SlectManDialog setCancelable(boolean cancel) {
+    public SlectXlDialog setCancelable(boolean cancel) {
         dialog.setCancelable(cancel);
         return this;
     }
@@ -141,7 +153,7 @@ public class SlectManDialog {
      * @param listener
      * @return
      */
-    public SlectManDialog setNegativeButton(String text, View.OnClickListener listener) {
+    public SlectXlDialog setNegativeButton(String text, View.OnClickListener listener) {
         if ("".equals(text)) {
             taskFinishCancel.setText("取消");
         } else {
@@ -163,7 +175,7 @@ public class SlectManDialog {
      * @param listener
      * @return
      */
-    public SlectManDialog setPositiveButton(String text, final View.OnClickListener listener) {
+    public SlectXlDialog setPositiveButton(String text, final View.OnClickListener listener) {
         if ("".equals(text)) {
             taskFinishSubmit.setText("确定");
         } else {

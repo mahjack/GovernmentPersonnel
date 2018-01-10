@@ -125,7 +125,7 @@ public class DBHelper {
 	 */
     public List<Group_info> findAllCursor(String tableName) {
         Cursor cursor = db.query(tableName, null, null, null, null,
-                null, null);
+                null, "sort ASC",null);
         List<Group_info> groupInfoList=new ArrayList<>();
         Group_info ginfo = new Group_info(0,0,0,"全部部门");
         groupInfoList.add(ginfo);
@@ -151,7 +151,7 @@ public class DBHelper {
 	public Cursor findJtcyCursor(String tableName,int rsid) {
 
 		Cursor cursor = db.query(tableName, null, "rs_id="+rsid, null, null,
-				null, null);
+				null, "id ASC",null);
 
 		return cursor;
 
@@ -171,14 +171,19 @@ public class DBHelper {
 	 * 通过state查找制定数据
 	 */
 	public List<RsdaInfo> findAll() {
-		Cursor cursor = db.query("rsda_info", null,null, null,
-				null, null,"seq ASC", null);
+		String sql="select * from" +
+				"(select  rsda.*, bmxx.seq as sort from rsda_info as rsda join kjj_group_info as bmxx on rsda.ssbm=bmxx.id)" +
+				"as `rsda_info` order by sort ASC,seq ASC";
+//		Cursor cursor = db.query("rsda_info", null,null, null,
+//				null, null,"seq ASC", null);
+		Cursor cursor = db.rawQuery(sql,null);
 		List<RsdaInfo> rsdaInfoList=new ArrayList<RsdaInfo>();
 		while (cursor.moveToNext()) {
 			RsdaInfo info = new RsdaInfo();
 			info.setId(cursor.getInt(cursor.getColumnIndex("id")));
 			info.setName(cursor.getString(cursor.getColumnIndex("name")));
 			info.setBirth(cursor.getString(cursor.getColumnIndex("birth")));
+			info.setCsd(cursor.getString(cursor.getColumnIndex("csd")));
 			info.setOrigin(cursor.getString(cursor.getColumnIndex("origin")));
 			info.setNation(GetCS.getMzCs(cursor.getInt(cursor.getColumnIndex("nation"))));
 			info.setRdtime(cursor.getString(cursor.getColumnIndex("rdtime")));
@@ -187,7 +192,13 @@ public class DBHelper {
 			info.setHealthy(cursor.getString(cursor.getColumnIndex("healthy")));
 			info.setZyjszw(cursor.getString(cursor.getColumnIndex("zyjszw")));
 			info.setSxzyzc(cursor.getString(cursor.getColumnIndex("sxzyzc")));
-			info.setBianzhi(cursor.getString(cursor.getColumnIndex("bianzhi")));
+			try {
+				info.setBianzhi(GetCS.getBianZhiCs(cursor.getInt(cursor.getColumnIndex("bianzhi"))));
+			} catch (Exception e) {
+				e.printStackTrace();
+				info.setBianzhi(cursor.getString(cursor.getColumnIndex("bianzhi")));
+			}
+
 			info.setDrsj(cursor.getString(cursor.getColumnIndex("drsj")));
 			info.setXrzsj(cursor.getString(cursor.getColumnIndex("xrzsj")));
 			info.setXrzjsj(cursor.getString(cursor.getColumnIndex("xrzjsj")));
@@ -235,8 +246,14 @@ public class DBHelper {
 	 * 通过state查找制定数据
 	 */
 	public List<RsdaInfo> findByState(int state) {
-		Cursor cursor = db.query("rsda_info", null, "state=" + state, null,
-				null, null,"seq ASC", null);
+		String sql="select * from" +
+				"(select  rsda.*, bmxx.seq as sort from rsda_info as rsda join kjj_group_info as bmxx on rsda.ssbm=bmxx.id)" +
+				"as `rsda_info` where state=? order by sort ASC,seq ASC";
+//		Cursor cursor = db.query("rsda_info", null,null, null,
+//				null, null,"seq ASC", null);
+		Cursor cursor = db.rawQuery(sql,new String[]{state+""});
+//		Cursor cursor = db.query("rsda_info", null, "state=" + state, null,
+//				null, null,"seq ASC", null);
 		List<RsdaInfo> rsdaInfoList=new ArrayList<RsdaInfo>();
 		while (cursor.moveToNext()) {
 			RsdaInfo info = new RsdaInfo();
@@ -246,12 +263,17 @@ public class DBHelper {
 			info.setOrigin(cursor.getString(cursor.getColumnIndex("origin")));
 			info.setNation(GetCS.getMzCs(cursor.getInt(cursor.getColumnIndex("nation"))));
 			info.setRdtime(cursor.getString(cursor.getColumnIndex("rdtime")));
-
+			info.setCsd(cursor.getString(cursor.getColumnIndex("csd")));
 			info.setWorktime(cursor.getString(cursor.getColumnIndex("worktime")));
 			info.setHealthy(cursor.getString(cursor.getColumnIndex("healthy")));
 			info.setZyjszw(cursor.getString(cursor.getColumnIndex("zyjszw")));
 			info.setSxzyzc(cursor.getString(cursor.getColumnIndex("sxzyzc")));
-			info.setBianzhi(cursor.getString(cursor.getColumnIndex("bianzhi")));
+			try {
+				info.setBianzhi(GetCS.getBianZhiCs(cursor.getInt(cursor.getColumnIndex("bianzhi"))));
+			} catch (Exception e) {
+				e.printStackTrace();
+				info.setBianzhi(cursor.getString(cursor.getColumnIndex("bianzhi")));
+			}
 			info.setDrsj(cursor.getString(cursor.getColumnIndex("drsj")));
 			info.setXrzsj(cursor.getString(cursor.getColumnIndex("xrzsj")));
 			info.setXrzjsj(cursor.getString(cursor.getColumnIndex("xrzjsj")));
@@ -308,15 +330,20 @@ public class DBHelper {
 			info.setId(cursor.getInt(cursor.getColumnIndex("id")));
             info.setName(cursor.getString(cursor.getColumnIndex("name")));
             info.setBirth(cursor.getString(cursor.getColumnIndex("birth")));
-            info.setNation(cursor.getString(cursor.getColumnIndex("nation")));
-            info.setOrigin(cursor.getString(cursor.getColumnIndex("origin")));
+			info.setOrigin(cursor.getString(cursor.getColumnIndex("origin")));
+			info.setNation(GetCS.getMzCs(cursor.getInt(cursor.getColumnIndex("nation"))));
             info.setRdtime(cursor.getString(cursor.getColumnIndex("rdtime")));
-
+			info.setCsd(cursor.getString(cursor.getColumnIndex("csd")));
             info.setWorktime(cursor.getString(cursor.getColumnIndex("worktime")));
             info.setHealthy(cursor.getString(cursor.getColumnIndex("healthy")));
             info.setZyjszw(cursor.getString(cursor.getColumnIndex("zyjszw")));
             info.setSxzyzc(cursor.getString(cursor.getColumnIndex("sxzyzc")));
-            info.setBianzhi(cursor.getString(cursor.getColumnIndex("bianzhi")));
+			try {
+				info.setBianzhi(GetCS.getBianZhiCs(cursor.getInt(cursor.getColumnIndex("bianzhi"))));
+			} catch (Exception e) {
+				e.printStackTrace();
+				info.setBianzhi(cursor.getString(cursor.getColumnIndex("bianzhi")));
+			}
             info.setDrsj(cursor.getString(cursor.getColumnIndex("drsj")));
             info.setXrzsj(cursor.getString(cursor.getColumnIndex("xrzsj")));
             info.setXrzjsj(cursor.getString(cursor.getColumnIndex("xrzjsj")));
@@ -367,30 +394,49 @@ public class DBHelper {
 		List<String> li=new ArrayList<>();
 		List<String> keyList=new ArrayList<>();
 		if (!"0".equals(ssbm)){
-			keyList.add("ssbm=? ");
-			li.add(ssbm);
+
+//			li.add(ssbm);
+			if (ssbm.equals("48")){
+				keyList.add("ssbm not in (28)");
+			}else if(ssbm.equals("20")){
+				keyList.add("ssbm>=30 and ssbm<=45");
+			}else if(ssbm.equals("21")){
+				keyList.add("ssbm in (21,22)");
+			}else if(ssbm.equals("13")){
+				keyList.add("ssbm in (13,16,17,18,19)");
+			}else{
+				keyList.add("ssbm= "+ssbm);
+			}
 		}
 		if (!"0".equals(jb)){
 			li.add(jb);
-			keyList.add("xzjb=? ");
+			keyList.add("xzjb= "+jb);
 		}
 		if (!"0".equals(zzmm)){
 			li.add(zzmm);
-			keyList.add("zzmm=? ");
+			keyList.add("zzmm= "+zzmm);
 		}
 		if (!"0".equals(xb)){
-			keyList.add("sex=? ");
+			keyList.add("sex= "+xb);
 			li.add(xb);
 		}
 		if (!"0".equals(xl)){
-			li.add(xl);
-			keyList.add("qr_xl=? ");
+//			li.add(xl);
+			if("1".equals(xl)){
+				keyList.add("((qr_xl >=11 and qr_xl<20) or id in (select rs_id from zzjy_info where xl >=11 and xl<20 ))");
+			}else if("2".equals(xl)){
+				keyList.add("((qr_xl >=21 and qr_xl<30) or id in (select rs_id from zzjy_info where xl >=21 and xl<30 ))");
+			}else if("3".equals(xl)){
+				keyList.add("((qr_xl >=31 and qr_xl<40) or id in (select rs_id from zzjy_info where xl >=31 and xl<40 ))");
+			}else{
+				keyList.add("((qr_xl ="+xl+" or id in(select rs_id from zzjy_info where xl="+xl+")))");
+			}
 		}
-		if (!"".equals(bz)){
+		if (!"0".equals(bz)){
 			li.add(bz);
-			keyList.add("bianzhi=? ");
+			keyList.add("bianzhi= "+bz);
 		}
-		String[] arr = (String[])li.toArray(new String[li.size()]);
+//		String[] arr = (String[])li.toArray(new String[li.size()]);
 		String key="";
 		for (int i = 0; i <keyList.size() ; i++) {
 			key+=keyList.get(i);
@@ -399,24 +445,45 @@ public class DBHelper {
 			}
 		}
 		Log.v("key",key);
-		Log.v("list",arr.toString());
-		Cursor cursor = db.query("rsda_info", null, key, arr,
-				null, null,"seq ASC", null);
+//		Log.v("list",arr.toString());
+//		Cursor cursor = db.query("rsda_info", null, key, arr,
+//				null, null,"seq ASC", null);
+		String sql="";
+		if ("".equals(key)){
+			sql="select * from" +
+					"(select  rsda.*, bmxx.seq as sort from rsda_info as rsda join kjj_group_info as bmxx on rsda.ssbm=bmxx.id)" +
+					"as `rsda_info` order by sort ASC,seq ASC";
+		}else{
+			sql="select * from" +
+					"(select  rsda.*, bmxx.seq as sort from rsda_info as rsda join kjj_group_info as bmxx on rsda.ssbm=bmxx.id)" +
+					"as `rsda_info` where "+key+" order by sort ASC,seq ASC";
+		}
+
+		Cursor cursor=db.rawQuery(sql,null);
 		List<RsdaInfo> rsdaInfoList=new ArrayList<RsdaInfo>();
+
+
+
+
 		while (cursor.moveToNext()) {
 			RsdaInfo info = new RsdaInfo();
 			info.setId(cursor.getInt(cursor.getColumnIndex("id")));
 			info.setName(cursor.getString(cursor.getColumnIndex("name")));
 			info.setBirth(cursor.getString(cursor.getColumnIndex("birth")));
-			info.setNation(cursor.getString(cursor.getColumnIndex("nation")));
 			info.setOrigin(cursor.getString(cursor.getColumnIndex("origin")));
+			info.setNation(GetCS.getMzCs(cursor.getInt(cursor.getColumnIndex("nation"))));
 			info.setRdtime(cursor.getString(cursor.getColumnIndex("rdtime")));
-
+			info.setCsd(cursor.getString(cursor.getColumnIndex("csd")));
 			info.setWorktime(cursor.getString(cursor.getColumnIndex("worktime")));
 			info.setHealthy(cursor.getString(cursor.getColumnIndex("healthy")));
 			info.setZyjszw(cursor.getString(cursor.getColumnIndex("zyjszw")));
 			info.setSxzyzc(cursor.getString(cursor.getColumnIndex("sxzyzc")));
-			info.setBianzhi(cursor.getString(cursor.getColumnIndex("bianzhi")));
+			try {
+				info.setBianzhi(GetCS.getBianZhiCs(cursor.getInt(cursor.getColumnIndex("bianzhi"))));
+			} catch (Exception e) {
+				e.printStackTrace();
+				info.setBianzhi(cursor.getString(cursor.getColumnIndex("bianzhi")));
+			}
 			info.setDrsj(cursor.getString(cursor.getColumnIndex("drsj")));
 			info.setXrzsj(cursor.getString(cursor.getColumnIndex("xrzsj")));
 			info.setXrzjsj(cursor.getString(cursor.getColumnIndex("xrzjsj")));

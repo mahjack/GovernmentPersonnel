@@ -1,27 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:layout_marginTop="@dimen/dimen_5"
     android:orientation="vertical" >
-
-    <GridView
-        android:id="@+id/gridView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFF"
-        android:horizontalSpacing="2dp"
-        android:verticalSpacing="2dp"
-        android:padding="2dp"
-        android:numColumns="2" >
-    </GridView>
-    <TextView
-        android:id="@+id/tv_no"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="@dimen/dimen_16"
-        android:visibility="gone"
-        android:gravity="center"
-        android:text="暂无数据"/>
+        android:layout_height="match_parent">
+        <com.sdzx.government.governmentpersonnel.tools.PowerfulLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="horizontal">
+                    <View style="@style/style_line_vertical1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:ems="2"
+                        android:gravity="center"
+                        android:text="家庭主要成员及社会关系"
+                        android:textSize="14sp" />
 
-</FrameLayout>
+                    <View style="@style/style_line_vertical1" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dimen_0.5"
+                        android:background="@color/white"
+                        android:layout_marginRight="@dimen/dimen_10"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="称谓"
+                                android:gravity="center"
+                                android:textSize="14sp" />
+
+                            <View style="@style/style_line_vertical1" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="姓名"
+                                android:gravity="center"
+                                android:textSize="14sp" />
+
+                            <View style="@style/style_line_vertical1" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="出生年月"
+                                android:textSize="14sp" />
+
+                            <View style="@style/style_line_vertical1" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="政治面貌"
+                                android:textSize="14sp" />
+
+                            <View style="@style/style_line_vertical1" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="工作单位及职务"
+                                android:gravity="center"
+                                android:textSize="14sp" />
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_0.5"
+                            android:background="@color/black"></TextView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen_0.5"
+                            android:layout_marginLeft="30dp"
+                            android:background="@color/white">
+
+                            <com.sdzx.government.governmentpersonnel.tools.MyListView
+                                android:id="@+id/mylistviewjt"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                            </com.sdzx.government.governmentpersonnel.tools.MyListView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View style="@style/style_line_vertical1" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    android:background="@color/black"></TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/black">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dimen_0.5"
+                        android:background="@color/white"
+                        android:ems="1"
+                        android:gravity="center"
+                        android:text="备注"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_beizhu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/dimen_0.5"
+                        android:layout_marginLeft="@dimen/dimen_0.5"
+                        android:background="@color/white"
+                        android:text=""
+                        android:textSize="14sp" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    android:background="@color/black"></TextView>
+            </LinearLayout>
+        </com.sdzx.government.governmentpersonnel.tools.PowerfulLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

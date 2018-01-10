@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,6 +22,8 @@ import com.sdzx.government.governmentpersonnel.R;
 import com.sdzx.government.governmentpersonnel.activity.MyApp;
 import com.sdzx.government.governmentpersonnel.activity.PeopleInfoActivity;
 import com.sdzx.government.governmentpersonnel.activity.SlectManDialog;
+import com.sdzx.government.governmentpersonnel.activity.SlectXlDialog;
+import com.sdzx.government.governmentpersonnel.activity.SlectXzjbDialog;
 import com.sdzx.government.governmentpersonnel.adapter.PeoplesAdapter;
 import com.sdzx.government.governmentpersonnel.adapter.SpinnerAda1;
 import com.sdzx.government.governmentpersonnel.bean.RsdaInfo;
@@ -43,7 +44,7 @@ import static com.sdzx.government.governmentpersonnel.activity.MainActivity.db;
 public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout.OnRefreshListener {
     Context context;
     @Bind(R.id.text_bz)
-    EditText textBz;
+    Spinner textBz;
     @Bind(R.id.text_cx)
     Button textCx;
     private Handler handler;
@@ -51,14 +52,14 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
     ListView expandableListView;
     @Bind(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
-
-    public  static TextView spinner_bm;
+//    @Bind(R.id.spinner_bm)
+    public static TextView spinner_bm;
     @Bind(R.id.spinner_xb)
     Spinner spinner_xb;
-    @Bind(R.id.spinner_xl)
-    Spinner spinner_xl;
-    @Bind(R.id.spinner_jb)
-    Spinner spinner_jb;
+//    @Bind(R.id.spinner_xl)
+    public static TextView spinner_xl;
+//    @Bind(R.id.spinner_jb)
+    public static TextView spinner_jb;
     @Bind(R.id.spinner_zzmm)
     Spinner spinner_zzmm;
     @Bind(R.id.message)
@@ -68,7 +69,7 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
     private List<String> ChildData=new ArrayList<>();//第一级数据
     private List<String> ChildDataId=new ArrayList<>();//第一级数据ID
 
-//    String ssbm = "0";
+    String ssbm = "0";
     String jb = "0";
     String zzmm = "0";
     String xb = "0";
@@ -87,6 +88,8 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         ButterKnife.bind(this, v);
         spinner_bm=(TextView) v.findViewById(R.id.spinner_bm);
+        spinner_xl=(TextView) v.findViewById(R.id.spinner_xl);
+        spinner_jb=(TextView) v.findViewById(R.id.spinner_jb);
         handler = new Handler();
         swipeRefreshLayout.setColorSchemeResources(R.color.deeppink, R.color.darkorange, R.color.mediumblue);
         swipeRefreshLayout.post(this);
@@ -95,7 +98,6 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
         message.setText("当前查询到"+infoList.size()+"人");
         expandableAdapter = new PeoplesAdapter(context, infoList);
         expandableListView.setAdapter(expandableAdapter);
-        textBz.setCursorVisible(false);
         swipeRefreshLayout.setRefreshing(false);
         expandableListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -109,35 +111,7 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
 
             }
         });
-
-        List<String> list2 = new ArrayList<String>();
-        for (int i = 0; i < MyApp.group_infoList.size(); i++) {
-            list2.add(MyApp.group_infoList.get(i).getName());
-        }
-
-//        SpinnerAda bmAda = new SpinnerAda(list2, context);
-//        spinner_bm.setAdapter(bmAda);
-//        spinner_bm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view,
-//                                       int position, long id) {
-//                int ssbmnum = MyApp.group_infoList.get(position).getId();
-//                ssbm = ssbmnum + "";
-//                if (ssbmnum != 0) {
-//                    infoList = db.findByStateAndBm(0, ssbmnum);
-//                    expandableAdapter.updateListView(infoList);
-//                    message.setText("当前查询到"+infoList.size()+"人");
-//                } else {
-//                    infoList = db.findByState(0);
-//                    expandableAdapter.updateListView(infoList);
-//                    message.setText("当前查询到"+infoList.size()+"人");
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
+        spinner_bm.setText(MyApp.bmname);
         spinner_bm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,8 +119,26 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
                 dialog.builder()
                         .setTitle("请选择")
                         .setCancelable(true)
-
-
+                        .show();
+            }
+        });
+        spinner_xl.setText(MyApp.xlname);
+        spinner_xl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SlectXlDialog(context).builder()
+                        .setTitle("请选择")
+                        .setCancelable(true)
+                        .show();
+            }
+        });
+        spinner_jb.setText(MyApp.bmname);
+        spinner_jb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SlectXzjbDialog(context).builder()
+                        .setTitle("请选择")
+                        .setCancelable(true)
                         .show();
             }
         });
@@ -168,34 +160,35 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        SpinnerAda1 xlAda = new SpinnerAda1(GetCS.xlMap, context);
-        spinner_xl.setAdapter(xlAda);
-        spinner_xl.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        SpinnerAda1 xlAda = new SpinnerAda1(GetCS.bzMap, context);
+        textBz.setAdapter(xlAda);
+        textBz.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-                xl=position+"";
-                Log.v("xingbie", xl + "");
+                bz=position+"";
+                Log.v("xingbie", bz + "");
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        SpinnerAda1 jbAda = new SpinnerAda1(GetCS.xzjbMap, context);
-        spinner_jb.setAdapter(jbAda);
-        spinner_jb.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                jb = position+"";
-                Log.v("xingbie", jb + "");
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+//        SpinnerAda1 jbAda = new SpinnerAda1(GetCS.xzjbMap, context);
+//        spinner_jb.setAdapter(jbAda);
+//        spinner_jb.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view,
+//                                       int position, long id) {
+//                jb = position+"";
+//                Log.v("xingbie", jb + "");
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
         SpinnerAda1 zzmmAda = new SpinnerAda1(GetCS.zzmmMap, context);
         spinner_zzmm.setAdapter(zzmmAda);
         spinner_zzmm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -213,7 +206,7 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
         textCx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                infoList = db.findByCs(MyApp.bmid,jb,zzmm,xb,xl,textBz.getText().toString());
+                infoList = db.findByCs(MyApp.bmid,MyApp.jbid,zzmm,xb,MyApp.xlid,bz);
                 expandableAdapter.updateListView(infoList);
                 message.setText("当前查询到"+infoList.size()+"人");
             }
@@ -243,9 +236,4 @@ public class DaFragment extends Fragment implements Runnable, SwipeRefreshLayout
         ButterKnife.unbind(this);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        spinner_bm.setText(MyApp.bmname);
-    }
 }

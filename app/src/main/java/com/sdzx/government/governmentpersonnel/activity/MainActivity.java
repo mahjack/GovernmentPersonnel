@@ -32,7 +32,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-
 public class MainActivity extends FragmentActivity {
     private static final String TAG = "MainActivity";
     @Bind(R.id.tv_yh)
